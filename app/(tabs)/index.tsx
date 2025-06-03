@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState } from 'react';
-import { Search, Bell, CalendarClock } from 'lucide-react-native';
+import { Search, Bell, Trophy, GraduationCap } from 'lucide-react-native';
 import { UpcomingBooking } from '@/components/home/UpcomingBooking';
 import { CourtCard } from '@/components/courts/CourtCard';
 
@@ -38,20 +38,64 @@ export default function HomeScreen() {
 
           <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.bookingsScroll}>
             <UpcomingBooking 
-              courtName="Downtown Padel Club"
+              courtName="Downtown Padel Club - Court 2"
               courtType="padel"
               date="Today"
               time="18:00 - 19:30"
               image="https://images.pexels.com/photos/2277981/pexels-photo-2277981.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             />
             <UpcomingBooking 
-              courtName="Riverside Pickleball"
+              courtName="Riverside Pickleball - Court 1"
               courtType="pickleball"
               date="Tomorrow"
               time="10:00 - 11:30"
               image="https://images.pexels.com/photos/6765942/pexels-photo-6765942.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             />
           </ScrollView>
+        </View>
+
+        {/* Services */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Services</Text>
+          <View style={styles.servicesGrid}>
+            <TouchableOpacity style={styles.serviceCard}>
+              <View style={[styles.serviceIcon, { backgroundColor: 'rgba(22, 255, 145, 0.15)' }]}>
+                <Trophy size={24} color="#16FF91" />
+              </View>
+              <Text style={styles.serviceTitle}>Tournaments</Text>
+              <Text style={styles.serviceDescription}>Join competitive matches</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.serviceCard}>
+              <View style={[styles.serviceIcon, { backgroundColor: 'rgba(50, 209, 255, 0.15)' }]}>
+                <GraduationCap size={24} color="#32D1FF" />
+              </View>
+              <Text style={styles.serviceTitle}>Lessons</Text>
+              <Text style={styles.serviceDescription}>Learn from pros</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* Upcoming Tournaments */}
+        <View style={styles.section}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Upcoming Tournaments</Text>
+            <TouchableOpacity>
+              <Text style={styles.seeAll}>See All</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.tournamentCard}>
+            <Image 
+              source={{ uri: "https://images.pexels.com/photos/8224728/pexels-photo-8224728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" }}
+              style={styles.tournamentImage}
+            />
+            <View style={styles.tournamentInfo}>
+              <Text style={styles.tournamentTitle}>Spring Padel Championship</Text>
+              <Text style={styles.tournamentDate}>March 15-17, 2024</Text>
+              <TouchableOpacity style={styles.registerButton}>
+                <Text style={styles.registerButtonText}>Register Now</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
 
         {/* Court Filters */}
@@ -76,15 +120,15 @@ export default function HomeScreen() {
               <Text style={[styles.filterText, activeTab === 'pickleball' && styles.activeFilterText]}>Pickleball</Text>
             </TouchableOpacity>
             <TouchableOpacity 
-              style={[styles.filterTab, activeTab === 'nearby' && styles.activeFilterTab]}
-              onPress={() => setActiveTab('nearby')}
+              style={[styles.filterTab, activeTab === 'lessons' && styles.activeFilterTab]}
+              onPress={() => setActiveTab('lessons')}
             >
-              <Text style={[styles.filterText, activeTab === 'nearby' && styles.activeFilterText]}>Nearby</Text>
+              <Text style={[styles.filterText, activeTab === 'lessons' && styles.activeFilterText]}>Lessons</Text>
             </TouchableOpacity>
           </ScrollView>
         </View>
 
-        {/* Available Courts */}
+        {/* Available Courts & Lessons */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Available Now</Text>
@@ -95,7 +139,7 @@ export default function HomeScreen() {
 
           <View style={styles.courtsGrid}>
             <CourtCard 
-              name="Downtown Padel Club"
+              name="Padel Court 1"
               type="padel"
               price={35}
               rating={4.8}
@@ -104,7 +148,7 @@ export default function HomeScreen() {
               availableSlots={3}
             />
             <CourtCard 
-              name="Riverside Pickleball"
+              name="Pickleball Court 1"
               type="pickleball"
               price={25}
               rating={4.5}
@@ -113,7 +157,7 @@ export default function HomeScreen() {
               availableSlots={5}
             />
             <CourtCard 
-              name="City Padel Center"
+              name="Padel Court 2"
               type="padel"
               price={40}
               rating={4.9}
@@ -122,13 +166,31 @@ export default function HomeScreen() {
               availableSlots={2}
             />
             <CourtCard 
-              name="Beach Pickleball Courts"
+              name="Pickleball Court 2"
               type="pickleball"
               price={20}
               rating={4.3}
               distance="5.1 km"
               image="https://images.pexels.com/photos/6787202/pexels-photo-6787202.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
               availableSlots={8}
+            />
+            <CourtCard 
+              name="Padel Court 3"
+              type="padel"
+              price={45}
+              rating={4.7}
+              distance="4.3 km"
+              image="https://images.pexels.com/photos/13635523/pexels-photo-13635523.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              availableSlots={4}
+            />
+            <CourtCard 
+              name="Padel Court 4"
+              type="padel"
+              price={35}
+              rating={4.6}
+              distance="1.8 km"
+              image="https://images.pexels.com/photos/6765986/pexels-photo-6765986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              availableSlots={6}
             />
           </View>
         </View>
@@ -202,6 +264,73 @@ const styles = StyleSheet.create({
   },
   bookingsScroll: {
     marginLeft: -8,
+  },
+  servicesGrid: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 16,
+  },
+  serviceCard: {
+    width: '48%',
+    backgroundColor: '#22293A',
+    borderRadius: 16,
+    padding: 16,
+    alignItems: 'center',
+  },
+  serviceIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  serviceTitle: {
+    fontFamily: 'Inter-Bold',
+    fontSize: 16,
+    color: '#FFFFFF',
+    marginBottom: 4,
+  },
+  serviceDescription: {
+    fontFamily: 'Inter-Regular',
+    fontSize: 14,
+    color: '#8F98A8',
+    textAlign: 'center',
+  },
+  tournamentCard: {
+    backgroundColor: '#22293A',
+    borderRadius: 16,
+    overflow: 'hidden',
+  },
+  tournamentImage: {
+    width: '100%',
+    height: 160,
+  },
+  tournamentInfo: {
+    padding: 16,
+  },
+  tournamentTitle: {
+    fontFamily: 'Inter-Bold',
+    fontSize: 18,
+    color: '#FFFFFF',
+    marginBottom: 4,
+  },
+  tournamentDate: {
+    fontFamily: 'Inter-Regular',
+    fontSize: 14,
+    color: '#8F98A8',
+    marginBottom: 12,
+  },
+  registerButton: {
+    backgroundColor: '#16FF91',
+    borderRadius: 8,
+    paddingVertical: 8,
+    alignItems: 'center',
+  },
+  registerButtonText: {
+    fontFamily: 'Inter-Bold',
+    fontSize: 14,
+    color: '#000000',
   },
   filterContainer: {
     marginTop: 24,
