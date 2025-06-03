@@ -130,13 +130,6 @@ export default function HomeScreen() {
 
         {/* Available Courts & Lessons */}
         <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Available Now</Text>
-            <TouchableOpacity>
-              <Text style={styles.seeAll}>See All</Text>
-            </TouchableOpacity>
-          </View>
-
           <View style={styles.courtsGrid}>
             <CourtCard 
               name="Padel Court 1"
